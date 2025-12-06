@@ -1,0 +1,172 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0b1120;
+  color: #e5e7eb;
+}
+
+.container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #020617;
+  border-radius: 1rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #9ca3af;
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: #111827;
+  border: 1px solid #4b5563;
+}
+
+.board {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
+
+.cell {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  border: 1px solid #4b5563;
+}
+
+.cell span {
+  transform: translateY(-1px);
+}
+
+.cell-empty {
+  background: #020617;
+}
+
+.cell-correct {
+  background: #16a34a;
+  border-color: #16a34a;
+}
+
+.cell-present {
+  background: #eab308;
+  border-color: #eab308;
+}
+
+.cell-absent {
+  background: #4b5563;
+  border-color: #4b5563;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.guess-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.guess-form input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #4b5563;
+  background: #020617;
+  color: #e5e7eb;
+}
+
+.guess-form input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 1px #6366f1;
+}
+
+.guess-form button,
+.reset-form button {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  background: #6366f1;
+  color: #f9fafb;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+}
+
+.guess-form button:hover,
+.reset-form button:hover {
+  background: #4f46e5;
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.5);
+  transform: translateY(-1px);
+}
+
+.reset-form {
+  display: flex;
+  justify-content: center;
+}
+
+.legend h2 {
+  margin-bottom: 0.5rem;
+}
+
+.legend ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.legend-box {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid #4b5563;
+}
+
+.legend-correct {
+  background: #16a34a;
+  border-color: #16a34a;
+}
+
+.legend-present {
+  background: #eab308;
+  border-color: #eab308;
+}
+
+.legend-absent {
+  background: #4b5563;
+  border-color: #4b5563;
+}

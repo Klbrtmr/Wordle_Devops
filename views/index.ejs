@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Szókitaláló játék (Wordle-szerű)</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Szókitaláló játék</h1>
+    <p class="subtitle">Találd ki az <strong><%= wordLength %></strong> betűs szót legfeljebb <strong><%= maxAttempts %></strong> próbálkozásból!</p>
+
+    <% if (lastMessage) { %>
+      <div class="message"><%= lastMessage %></div>
+    <% } %>
+
+    <section class="board">
+      <% for (let row = 0; row < maxAttempts; row++) { %>
+        <div class="row">
+          <% if (row < attempts.length) { 
+               const attempt = attempts[row];
+               for (let i = 0; i < wordLength; i++) {
+                 const cell = attempt.result[i]; %>
+                 <div class="cell cell-<%= cell.status %>">
+                   <span><%= cell.letter %></span>
+                 </div>
+          <%   } 
+             } else { 
+               for (let i = 0; i < wordLength; i++) { %>
+                 <div class="cell cell-empty"></div>
+          <%   } 
+             } %>
+        </div>
+      <% } %>
+    </section>
+
+    <section class="controls">
+      <% if (!gameOver) { %>
+        <form method="POST" action="/guess" class="guess-form">
+          <input
+            type="text"
+            name="guess"
+            maxlength="<%= wordLength %>"
+            minlength="<%= wordLength %>"
+            required
+            placeholder="Írj be egy <%= wordLength %> betűs szót"
+            autocomplete="off"
+          />
+          <button type="submit">Tipp elküldése</button>
+        </form>
+      <% } %>
+
+      <form method="POST" action="/reset" class="reset-form">
+        <button type="submit">Új játék</button>
+      </form>
+    </section>
+
+    <section class="legend">
+      <h2>Jelölések</h2>
+      <ul>
+        <li><span class="legend-box legend-correct"></span> Zöld: jó betű, jó helyen</li>
+        <li><span class="legend-box legend-present"></span> Sárga: jó betű, másik helyen</li>
+        <li><span class="legend-box legend-absent"></span> Szürke: nincs ilyen betű a szóban</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
