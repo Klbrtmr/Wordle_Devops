@@ -84,6 +84,12 @@ resource "docker_container" "grafana" {
     external = 3100
   }
 
+  # Tartós adat: dashboardok, user-ek, stb.
+  volumes {
+    host_path      = abspath("${path.module}/grafana-data")
+    container_path = "/var/lib/grafana"
+  }
+
   networks_advanced {
     name = docker_network.monitoring.name
   }
